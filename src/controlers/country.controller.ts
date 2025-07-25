@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from 'express';
-import countryService from 'services/country.service';
+import countryService from 'services/country/country.service';
 import {CountryInfo} from 'types/countryInfo.type';
 import {FetchResponse} from 'types/fetchResponse.type';
 import {AppError} from 'utils/appErrors';

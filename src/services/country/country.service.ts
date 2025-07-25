@@ -1,11 +1,12 @@
 import {FetchResponse} from 'types/fetchResponse.type';
-import {env} from '../env';
+import {env} from '../../env';
 import {
   CountryFullInfo,
   CountryInfo,
   NeighbouringCountryInfo,
   PopulationCount
 } from 'types/countryInfo.type';
+import {Holiday} from 'types/holiday.type';
 
 class CountryService {
   private datenagerBaseUrl = env.DATENAGER_URL;
@@ -61,6 +62,20 @@ class CountryService {
     const flagUrl = flagResponseBody.data.flag;
 
     return {error: null, data: {borders, populationData, flagUrl}};
+  }
+
+  public async getHolidays(countryCode: string, year: number): Promise<FetchResponse<Holiday[]>> {
+    const holidaysResponse = await fetch(
+      `${this.datenagerBaseUrl}/PublicHolidays/${year}/${countryCode}`
+    );
+
+    if (!holidaysResponse.ok) {
+      return {error: holidaysResponse.status, data: null};
+    }
+
+    const holidaysData = await holidaysResponse.json();
+
+    return {error: null, data: holidaysData};
   }
 }
 
