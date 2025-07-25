@@ -1,18 +1,13 @@
 import app from './app';
-import dotenv from 'dotenv';
 import connect from './db';
-
-dotenv.config();
-
-const PORT = process.env.PORT || 3000;
-const mongoConnection = process.env.DATABASE_URL || '';
+import {env} from './env';
 
 console.log('Server starting up...');
-connect(mongoConnection)
+connect(env.DATABASE_URL)
   .then(() => {
     console.log('Connection to database established');
-    app.listen(PORT, () => {
-      console.log(`Server up and running on port ${PORT}`);
+    app.listen(env.PORT, () => {
+      console.log(`Server up and running on port ${env.PORT}`);
     });
   })
   .catch(err => {
