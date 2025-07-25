@@ -5,3 +5,7 @@ export const validateSaveHolidays = z.object({
   year: z.number().min(1900).max(2100),
   holidays: z.array(z.string()).nonempty()
 });
+
+export const validateCreateuser = z.object({
+  login: z.string().nonempty()
+});

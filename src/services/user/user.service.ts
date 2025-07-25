@@ -1,5 +1,5 @@
-import User, {IUser} from 'models/user.model';
-import {AppError} from 'utils/appErrors';
+import User, {IUser} from '../../models/user.model';
+import {AppError} from '../../utils/appErrors';
 
 class UserService {
   public async createUser(login: string): Promise<IUser> {

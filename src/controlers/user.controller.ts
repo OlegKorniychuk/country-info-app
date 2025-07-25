@@ -1,17 +1,17 @@
 import {NextFunction, Request, Response} from 'express';
-import {IUser} from 'models/user.model';
-import countryService from 'services/country/country.service';
-import userService from 'services/user/user.service';
-import {validateSaveHolidays} from 'services/user/user.validate';
-import {FetchResponse} from 'types/fetchResponse.type';
-import {Holiday} from 'types/holiday.type';
-import {AppError} from 'utils/appErrors';
-import {catchError} from 'utils/catchError';
+import {IUser} from '../models/user.model';
+import countryService from '../services/country/country.service';
+import userService from '../services/user/user.service';
+import {validateCreateuser, validateSaveHolidays} from '../services/user/user.validate';
+import {FetchResponse} from '../types/fetchResponse.type';
+import {Holiday} from '../types/holiday.type';
+import {AppError} from '../utils/appErrors';
+import {catchError} from '../utils/catchError';
 
 class UserController {
   public createuser = catchError(
     async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-      const {login} = req.body;
+      const {login} = validateCreateuser.parse(req.body);
 
       const newUser: IUser = await userService.createUser(login);
 

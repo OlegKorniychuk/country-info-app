@@ -1,4 +1,4 @@
-import countryController from 'controlers/country.controller';
+import countryController from '../controlers/country.controller';
 import Router from 'express';
 
 const countryRouter = Router();

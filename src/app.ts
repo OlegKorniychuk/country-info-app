@@ -1,7 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
 import router from './routers/index';
-import {errorHandler} from 'utils/errorHandler';
+import {errorHandler} from './utils/errorHandler';
 
 const app = express();
 

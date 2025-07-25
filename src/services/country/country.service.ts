@@ -1,4 +1,4 @@
-import {FetchResponse} from 'types/fetchResponse.type';
+import {FetchResponse} from '../../types/fetchResponse.type';
 import {env} from '../../env';
 import {
   CountryFullInfo,

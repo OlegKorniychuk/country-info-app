@@ -1,9 +1,9 @@
 import {NextFunction, Request, Response} from 'express';
-import countryService from 'services/country/country.service';
-import {CountryInfo} from 'types/countryInfo.type';
-import {FetchResponse} from 'types/fetchResponse.type';
-import {AppError} from 'utils/appErrors';
-import {catchError} from 'utils/catchError';
+import countryService from '../services/country/country.service';
+import {CountryInfo} from '../types/countryInfo.type';
+import {FetchResponse} from '../types/fetchResponse.type';
+import {AppError} from '../utils/appErrors';
+import {catchError} from '../utils/catchError';
 
 class CountryController {
   public getCountries = catchError(
